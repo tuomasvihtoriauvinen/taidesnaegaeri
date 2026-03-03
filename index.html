@@ -111,19 +111,15 @@
 
   /* KIOSK ILLUSTRATION */
   .kiosk-illustration {
-    width: 220px;
+    width: 100%;
+    max-width: 420px;
     position: relative;
-    animation: floatKiosk 4s ease-in-out infinite;
-  }
-
-  @keyframes floatKiosk {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
   }
 
   .kiosk-svg {
     width: 100%;
     filter: drop-shadow(0 20px 40px rgba(215,43,43,0.25));
+    overflow: visible;
   }
 
   /* STATS STRIP */
@@ -497,110 +493,228 @@
   </div>
   <div class="hero-right">
     <div class="kiosk-illustration">
-      <svg class="kiosk-svg" viewBox="0 0 260 400" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="stripes" patternUnits="userSpaceOnUse" width="18" height="18" patternTransform="rotate(-45)">
-            <rect width="9" height="18" fill="#D72B2B"/>
-            <rect x="9" width="9" height="18" fill="white"/>
-          </pattern>
-          <!-- Wood grain texture -->
-          <pattern id="wood" patternUnits="userSpaceOnUse" width="4" height="40">
-            <rect width="4" height="40" fill="#C8A96E"/>
-            <rect x="1" width="1" height="40" fill="#B8956A" opacity="0.4"/>
-            <rect x="3" width="0.5" height="40" fill="#D4B47A" opacity="0.3"/>
-          </pattern>
-        </defs>
+<svg id="kioskSVG" viewBox="0 0 420 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;filter:drop-shadow(0 20px 40px rgba(215,43,43,0.25));">
+  <defs>
+    <!-- Red/white diagonal stripes for awning -->
+    <pattern id="awn" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(-45)">
+      <rect width="10" height="20" fill="#D72B2B"/>
+      <rect x="10" width="10" height="20" fill="#ffffff"/>
+    </pattern>
+    <!-- Spruce plywood warm grain -->
+    <linearGradient id="plywood" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#C4A265"/>
+      <stop offset="30%"  stop-color="#D4B275"/>
+      <stop offset="60%"  stop-color="#C0995E"/>
+      <stop offset="100%" stop-color="#CAA870"/>
+    </linearGradient>
+    <!-- Hatch interior glow -->
+    <linearGradient id="hatchGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#F5C518" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#2A1508" stop-opacity="1"/>
+    </linearGradient>
+    <!-- Ground gradient -->
+    <linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#DDD0B8"/>
+      <stop offset="100%" stop-color="#C8BB9E"/>
+    </linearGradient>
+    <!-- Clip for awning -->
+    <clipPath id="awnClip">
+      <rect x="20" y="96" width="380" height="46"/>
+    </clipPath>
+    <!-- Clip scene width for people walking -->
+    <clipPath id="sceneClip">
+      <rect x="0" y="0" width="420" height="400"/>
+    </clipPath>
+  </defs>
 
-        <!-- ====== KIOSK BOX ====== -->
-        <!-- Main spruce plywood body -->
-        <rect x="40" y="130" width="180" height="240" rx="3" fill="url(#wood)"/>
-        <!-- Plywood panel lines (vertical) -->
-        <line x1="100" y1="130" x2="100" y2="370" stroke="#A8855A" stroke-width="1" opacity="0.5"/>
-        <line x1="160" y1="130" x2="160" y2="370" stroke="#A8855A" stroke-width="1" opacity="0.5"/>
-        <!-- Front face slightly lighter -->
-        <rect x="40" y="130" width="180" height="240" rx="3" fill="#D4B47A" opacity="0.2"/>
+  <!-- ░░ GROUND ░░ -->
+  <rect x="0" y="310" width="420" height="90" fill="url(#groundGrad)"/>
+  <!-- ground shadow under kiosk -->
+  <ellipse cx="210" cy="318" rx="120" ry="9" fill="#1A1208" opacity="0.10"/>
 
-        <!-- ====== SERVING HATCH ====== -->
-        <!-- Hatch opening (horizontal slot in the plywood) -->
-        <rect x="40" y="215" width="180" height="60" fill="#2A1A08"/>
-        <!-- Counter shelf at bottom of hatch -->
-        <rect x="35" y="270" width="190" height="10" rx="2" fill="#8B6A3A"/>
-        <rect x="35" y="270" width="190" height="4" rx="1" fill="#A07840"/>
-        <!-- Interior warm glow behind hatch -->
-        <rect x="42" y="217" width="176" height="56" fill="#3D2510" opacity="0.9"/>
-        <rect x="42" y="217" width="176" height="56" fill="#F5C518" opacity="0.06"/>
+  <!-- ░░ KIOSK PLYWOOD SHELL ░░ -->
+  <!-- Main body -->
+  <rect x="110" y="108" width="200" height="208" rx="3" fill="url(#plywood)"/>
+  <!-- Vertical plywood sheet joins -->
+  <line x1="177" y1="108" x2="177" y2="316" stroke="#A07840" stroke-width="1.2" opacity="0.5"/>
+  <line x1="244" y1="108" x2="244" y2="316" stroke="#A07840" stroke-width="1.2" opacity="0.5"/>
+  <!-- Subtle face highlight -->
+  <rect x="110" y="108" width="200" height="208" rx="3" fill="white" opacity="0.07"/>
+  <!-- Bottom edge strip (floor trim) -->
+  <rect x="106" y="312" width="208" height="7" rx="2" fill="#8B6535"/>
 
-        <!-- Artist's hands + drawing in progress (seen through hatch) -->
-        <!-- Paper on counter inside -->
-        <rect x="65" y="235" width="70" height="50" rx="1" fill="#F5EFE0" opacity="0.9"/>
-        <!-- Quick sketch lines on paper -->
-        <path d="M72,248 Q85,242 95,250 Q105,258 98,262" stroke="#1A1208" stroke-width="1.5" fill="none" opacity="0.8"/>
-        <circle cx="80" cy="255" r="6" stroke="#D72B2B" stroke-width="1" fill="none" opacity="0.7"/>
-        <line x1="70" y1="268" x2="130" y2="268" stroke="#1A1208" stroke-width="0.8" opacity="0.4"/>
-        <!-- Pencil in hand -->
-        <line x1="118" y1="222" x2="108" y2="252" stroke="#F5C518" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="108" y1="252" x2="106" y2="257" stroke="#1A1208" stroke-width="1.5" stroke-linecap="round"/>
-        <!-- Hand suggestion -->
-        <ellipse cx="115" cy="226" rx="6" ry="4" fill="#D4956A" transform="rotate(-30 115 226)"/>
+  <!-- ░░ SERVING HATCH ░░ -->
+  <!-- Dark void of opening -->
+  <rect x="110" y="218" width="200" height="58" fill="#1E0E04"/>
+  <!-- Warm interior glow overlay -->
+  <rect x="112" y="220" width="196" height="54" fill="url(#hatchGlow)"/>
+  <!-- Counter shelf -->
+  <rect x="104" y="274" width="212" height="10" rx="2" fill="#9A7040"/>
+  <rect x="104" y="274" width="212" height="4"  rx="1" fill="#B08848"/>
 
-        <!-- Logo sign above hatch -->
-        <rect x="50" y="190" width="160" height="20" rx="2" fill="#D72B2B"/>
-        <text x="130" y="204" text-anchor="middle" font-family="monospace" font-size="9" fill="white" font-weight="bold" letter-spacing="1">TAIDESNÄGÄRI</text>
+  <!-- ░░ ARTIST HAND + PAPER INSIDE HATCH ░░ -->
+  <!-- Paper being drawn on, visible inside -->
+  <rect x="128" y="228" width="64" height="44" rx="1" fill="#F5EFE0" opacity="0.92"/>
+  <!-- Simple line drawing on paper (face/portrait sketch) -->
+  <circle cx="160" cy="244" r="8"  fill="none" stroke="#1A1208" stroke-width="1.2"/>
+  <line   x1="155" y1="254" x2="155" y2="263" stroke="#1A1208" stroke-width="1.1"/>
+  <line   x1="165" y1="254" x2="165" y2="263" stroke="#1A1208" stroke-width="1.1"/>
+  <path   d="M153,260 Q160,265 167,260" fill="none" stroke="#1A1208" stroke-width="1.1"/>
+  <!-- Pencil tip touching paper -->
+  <line x1="193" y1="224" x2="178" y2="256" stroke="#F5C518" stroke-width="2.8" stroke-linecap="round"/>
+  <line x1="178" y1="256" x2="176" y2="261" stroke="#1A1208" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- Artist hand knuckles suggestion -->
+  <ellipse cx="190" cy="228" rx="7" ry="5" fill="#C8845A" transform="rotate(-30,190,228)"/>
 
-        <!-- Small menu board above sign -->
-        <rect x="70" y="138" width="120" height="48" rx="2" fill="#1A1208"/>
-        <text x="130" y="153" text-anchor="middle" font-family="monospace" font-size="7" fill="#F5C518" letter-spacing="0.5">TILAA PIIRROS</text>
-        <line x1="78" y1="158" x2="182" y2="158" stroke="#333" stroke-width="0.5"/>
-        <text x="85" y="169" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.7)">● Postikortti</text>
-        <text x="85" y="179" font-family="monospace" font-size="6" fill="rgba(255,255,255,0.7)">● A4 / A3</text>
+  <!-- ░░ HANDING ARM — extends out from hatch toward customer ░░ -->
+  <!-- Forearm coming through hatch opening, handing drawing -->
+  <g id="handoffArm">
+    <!-- arm -->
+    <rect x="114" y="255" width="46" height="13" rx="6" fill="#C8845A"/>
+    <!-- hand / fingers -->
+    <ellipse cx="158" cy="261" rx="9" ry="6" fill="#C8845A"/>
+    <line x1="152" y1="256" x2="148" y2="252" stroke="#C8845A" stroke-width="4" stroke-linecap="round"/>
+    <line x1="158" y1="255" x2="155" y2="250" stroke="#C8845A" stroke-width="4" stroke-linecap="round"/>
+    <line x1="164" y1="256" x2="162" y2="251" stroke="#C8845A" stroke-width="4" stroke-linecap="round"/>
+    <!-- Drawing being handed: small postcard -->
+    <g transform="translate(138,244) rotate(-12)">
+      <rect x="0" y="0" width="30" height="22" rx="1" fill="#F5EFE0" stroke="#D72B2B" stroke-width="0.8"/>
+      <!-- tiny sketch on handed drawing -->
+      <circle cx="11" cy="9"  r="4"  fill="none" stroke="#1A1208" stroke-width="0.8"/>
+      <line   x1="8"  y1="15" x2="8"  y2="19" stroke="#1A1208" stroke-width="0.8"/>
+      <line   x1="14" y1="15" x2="14" y2="19" stroke="#1A1208" stroke-width="0.8"/>
+      <path   d="M7,17 Q11,20 15,17" fill="none" stroke="#1A1208" stroke-width="0.8"/>
+    </g>
+  </g>
 
-        <!-- ====== WIDE MARQUEE AWNING ====== -->
-        <!-- Awning extends wide so people can stand under it -->
-        <!-- Awning body — wide overhang on both sides -->
-        <rect x="0" y="95" width="260" height="42" fill="url(#stripes)"/>
-        <!-- Awning slight downward curve at edges to suggest slope -->
-        <path d="M0,137 Q30,145 65,140 L195,140 Q225,145 260,137 L260,95 L0,95 Z" fill="url(#stripes)" opacity="0.5"/>
+  <!-- ░░ SIGN + MENU BOARD ░░ -->
+  <!-- Red name sign -->
+  <rect x="120" y="190" width="180" height="23" rx="2" fill="#D72B2B"/>
+  <text x="210" y="206" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="bold" fill="white" letter-spacing="1.2">TAIDESNÄGÄRI</text>
+  <!-- Menu board -->
+  <rect x="140" y="116" width="140" height="68" rx="3" fill="#1A1208"/>
+  <text x="210" y="132" text-anchor="middle" font-family="monospace" font-size="7.5" fill="#F5C518" letter-spacing="0.8">TILAA PIIRROS</text>
+  <line x1="148" y1="138" x2="272" y2="138" stroke="#333" stroke-width="0.6"/>
+  <text x="152" y="150" font-family="monospace" font-size="6.5" fill="rgba(255,255,255,0.7)">● Postikortti</text>
+  <text x="152" y="163" font-family="monospace" font-size="6.5" fill="rgba(255,255,255,0.7)">● A4  /  A3</text>
+  <text x="152" y="176" font-family="monospace" font-size="6.5" fill="rgba(255,255,255,0.55)">● Käsinpiirretty</text>
 
-        <!-- Fringe / scalloped bottom edge of awning -->
-        <path d="M0,137 
-          Q8,150 16,137 
-          Q24,150 32,137 
-          Q40,150 48,137 
-          Q56,150 64,137 
-          Q72,150 80,137 
-          Q88,150 96,137 
-          Q104,150 112,137 
-          Q120,150 128,137 
-          Q136,150 144,137 
-          Q152,150 160,137 
-          Q168,150 176,137 
-          Q184,150 192,137 
-          Q200,150 208,137 
-          Q216,150 224,137 
-          Q232,150 240,137 
-          Q248,150 256,137 
-          L260,137 L260,132 L0,132 Z" 
-          fill="#D72B2B"/>
+  <!-- ░░ MARQUEE AWNING ░░ -->
+  <rect x="20" y="96" width="380" height="46" fill="url(#awn)" clip-path="url(#awnClip)"/>
+  <!-- Scalloped fringe -->
+  <path d="M20,142
+    Q29,158 38,142 Q47,158 56,142 Q65,158 74,142 Q83,158 92,142
+    Q101,158 110,142 Q119,158 128,142 Q137,158 146,142 Q155,158 164,142
+    Q173,158 182,142 Q191,158 200,142 Q209,158 218,142 Q227,158 236,142
+    Q245,158 254,142 Q263,158 272,142 Q281,158 290,142 Q299,158 308,142
+    Q317,158 326,142 Q335,158 344,142 Q353,158 362,142 Q371,158 380,142
+    Q389,158 398,142 L400,136 L20,136 Z"
+    fill="#D72B2B"/>
 
-        <!-- ====== CUSTOMERS STANDING UNDER AWNING ====== -->
-        <!-- Person 1 (left, leaning on counter) -->
-        <ellipse cx="22" cy="290" rx="11" ry="11" fill="#5B3A2A"/>
-        <rect x="11" y="301" width="22" height="50" rx="5" fill="#3A5A8A"/>
-        <line x1="22" y1="325" x2="35" y2="310" stroke="#3A5A8A" stroke-width="6" stroke-linecap="round"/>
-        <line x1="35" y1="310" x2="40" y2="272" stroke="#C8A96E" stroke-width="5" stroke-linecap="round"/>
+  <!-- ░░ ANIMATED PEOPLE ░░ -->
+  <g clip-path="url(#sceneClip)">
 
-        <!-- Person 2 (right, looking at hatch) -->
-        <ellipse cx="238" cy="285" rx="11" ry="11" fill="#8B6A3A"/>
-        <rect x="227" y="296" width="22" height="52" rx="5" fill="#6B4A2A"/>
-        <line x1="238" y1="318" x2="225" y2="305" stroke="#6B4A2A" stroke-width="6" stroke-linecap="round"/>
-        <line x1="225" y1="305" x2="220" y2="272" stroke="#C8A96E" stroke-width="5" stroke-linecap="round"/>
+    <!-- PERSON A
+         0.00–0.20 walk in  420→88
+         0.20–0.55 wait at counter (x=88)
+         0.55–0.60 receive drawing (x=88, drawing pops in)
+         0.60–1.00 walk off left  88→-80  (with drawing)
+    -->
+    <g id="personA">
+      <animateTransform attributeName="transform" type="translate"
+        values="420,0; 88,0; 88,0; 88,0; -80,0"
+        keyTimes="0; 0.20; 0.55; 0.60; 1"
+        dur="9s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4,0,0.6,1; 0,0,1,1; 0,0,1,1; 0.4,0,0.6,1"/>
+      <rect x="-14" y="230" width="28" height="54" rx="6" fill="#3A5A8A"/>
+      <circle cx="0" cy="222" r="13" fill="#D4956A"/>
+      <!-- reach-in arm: visible while waiting at counter (0.20–0.57), gone after -->
+      <line x1="12" y1="248" x2="30" y2="273" stroke="#3A5A8A" stroke-width="7" stroke-linecap="round" opacity="0">
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.20;0.21;0.55;0.56;1" dur="9s" repeatCount="indefinite"/>
+      </line>
+      <!-- raised arm with drawing: appears at 0.57, stays through exit -->
+      <line x1="-12" y1="245" x2="-30" y2="225" stroke="#D4956A" stroke-width="6" stroke-linecap="round" opacity="0">
+        <animate attributeName="opacity" values="0;0;0;1;1" keyTimes="0;0.20;0.56;0.57;1" dur="9s" repeatCount="indefinite"/>
+      </line>
+      <!-- drawing card: appears at 0.57, stays through exit -->
+      <g transform="translate(-44,212) rotate(-20)" opacity="0">
+        <rect x="0" y="0" width="26" height="19" rx="1" fill="#F5EFE0" stroke="#D72B2B" stroke-width="0.8"/>
+        <circle cx="9" cy="8" r="3.5" fill="none" stroke="#1A1208" stroke-width="0.8"/>
+        <animate attributeName="opacity" values="0;0;0;1;1" keyTimes="0;0.20;0.56;0.57;1" dur="9s" repeatCount="indefinite"/>
+      </g>
+      <line x1="-6" y1="284" x2="-8" y2="316" stroke="#1A2840" stroke-width="8" stroke-linecap="round"/>
+      <line x1="6"  y1="284" x2="8"  y2="316" stroke="#1A2840" stroke-width="8" stroke-linecap="round"/>
+    </g>
 
-        <!-- Ground shadow -->
-        <ellipse cx="130" cy="375" rx="90" ry="8" fill="#1A1208" opacity="0.12"/>
+    <!-- PERSON B  (begin=3s offset)
+         0.00–0.20 walk in  420→88
+         0.20–0.55 wait at counter
+         0.55–0.60 receive drawing
+         0.60–1.00 walk off left with drawing
+    -->
+    <g id="personB">
+      <animateTransform attributeName="transform" type="translate"
+        values="420,0; 88,0; 88,0; 88,0; -80,0"
+        keyTimes="0; 0.20; 0.55; 0.60; 1"
+        dur="9s" begin="3s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4,0,0.6,1; 0,0,1,1; 0,0,1,1; 0.4,0,0.6,1"/>
+      <rect x="-14" y="230" width="28" height="54" rx="6" fill="#2E7D32"/>
+      <circle cx="0" cy="222" r="13" fill="#8B5E3C"/>
+      <line x1="12" y1="248" x2="30" y2="273" stroke="#2E7D32" stroke-width="7" stroke-linecap="round" opacity="0">
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.20;0.21;0.55;0.56;1" dur="9s" begin="3s" repeatCount="indefinite"/>
+      </line>
+      <line x1="-12" y1="245" x2="-30" y2="225" stroke="#C68642" stroke-width="6" stroke-linecap="round" opacity="0">
+        <animate attributeName="opacity" values="0;0;0;1;1" keyTimes="0;0.20;0.56;0.57;1" dur="9s" begin="3s" repeatCount="indefinite"/>
+      </line>
+      <g transform="translate(-44,212) rotate(-20)" opacity="0">
+        <rect x="0" y="0" width="26" height="19" rx="1" fill="#F5EFE0" stroke="#D72B2B" stroke-width="0.8"/>
+        <circle cx="9" cy="8" r="3.5" fill="none" stroke="#1A1208" stroke-width="0.8"/>
+        <animate attributeName="opacity" values="0;0;0;1;1" keyTimes="0;0.20;0.56;0.57;1" dur="9s" begin="3s" repeatCount="indefinite"/>
+      </g>
+      <line x1="-6" y1="284" x2="-8" y2="316" stroke="#1A3020" stroke-width="8" stroke-linecap="round"/>
+      <line x1="6"  y1="284" x2="8"  y2="316" stroke="#1A3020" stroke-width="8" stroke-linecap="round"/>
+    </g>
 
-        <!-- Kiosk bottom edge / floor line -->
-        <rect x="40" y="368" width="180" height="6" rx="2" fill="#8B6A3A"/>
-      </svg>
+    <!-- PERSON C  (begin=6s offset)
+         same phases, different colours
+    -->
+    <g id="personC">
+      <animateTransform attributeName="transform" type="translate"
+        values="420,0; 88,0; 88,0; 88,0; -80,0"
+        keyTimes="0; 0.20; 0.55; 0.60; 1"
+        dur="9s" begin="6s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4,0,0.6,1; 0,0,1,1; 0,0,1,1; 0.4,0,0.6,1"/>
+      <rect x="-14" y="230" width="28" height="54" rx="6" fill="#7B1FA2"/>
+      <circle cx="0" cy="222" r="13" fill="#F0C9A0"/>
+      <line x1="12" y1="248" x2="30" y2="273" stroke="#7B1FA2" stroke-width="7" stroke-linecap="round" opacity="0">
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.20;0.21;0.55;0.56;1" dur="9s" begin="6s" repeatCount="indefinite"/>
+      </line>
+      <line x1="-12" y1="245" x2="-30" y2="225" stroke="#F0C9A0" stroke-width="6" stroke-linecap="round" opacity="0">
+        <animate attributeName="opacity" values="0;0;0;1;1" keyTimes="0;0.20;0.56;0.57;1" dur="9s" begin="6s" repeatCount="indefinite"/>
+      </line>
+      <g transform="translate(-44,212) rotate(-20)" opacity="0">
+        <rect x="0" y="0" width="26" height="19" rx="1" fill="#F5EFE0" stroke="#D72B2B" stroke-width="0.8"/>
+        <circle cx="9" cy="8" r="3.5" fill="none" stroke="#1A1208" stroke-width="0.8"/>
+        <animate attributeName="opacity" values="0;0;0;1;1" keyTimes="0;0.20;0.56;0.57;1" dur="9s" begin="6s" repeatCount="indefinite"/>
+      </g>
+      <line x1="-6" y1="284" x2="-8" y2="316" stroke="#4A0E62" stroke-width="8" stroke-linecap="round"/>
+      <line x1="6"  y1="284" x2="8"  y2="316" stroke="#4A0E62" stroke-width="8" stroke-linecap="round"/>
+    </g>
+
+  </g><!-- end sceneClip -->
+
+  <!-- pencil bob animation via CSS on the artist pencil group -->
+  <style>
+    @keyframes pencilBob { 0%,100%{transform:translate(0,0)} 50%{transform:translate(0,3px)} }
+    #artistPencil { animation: pencilBob 1.2s ease-in-out infinite; transform-origin: 193px 224px; }
+  </style>
+  <g id="artistPencil">
+    <line x1="193" y1="224" x2="178" y2="256" stroke="#F5C518" stroke-width="2.8" stroke-linecap="round"/>
+    <line x1="178" y1="256" x2="176" y2="261" stroke="#1A1208" stroke-width="1.6" stroke-linecap="round"/>
+    <ellipse cx="190" cy="228" rx="7" ry="5" fill="#C8845A" transform="rotate(-30,190,228)"/>
+  </g>
+
+</svg>
     </div>
   </div>
 </section>
