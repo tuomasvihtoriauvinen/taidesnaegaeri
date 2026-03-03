@@ -493,8 +493,25 @@
   </div>
   <div class="hero-right">
     <div class="kiosk-illustration">
-<svg id="kioskSVG" viewBox="0 0 420 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;filter:drop-shadow(0 20px 40px rgba(215,43,43,0.25));">
+<svg id="kioskSVG" viewBox="0 116 420 354" xmlns="http://www.w3.org/2000/svg" style="width:100%;filter:drop-shadow(0 20px 40px rgba(215,43,43,0.25));">
   <defs>
+    <!-- Neon red glow filter -->
+    <filter id="neonGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur2"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="16" result="blur3"/>
+      <feMerge>
+        <feMergeNode in="blur3"/>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Softer ambient glow for the neon backing panel -->
+    <filter id="panelGlow" x="-10%" y="-30%" width="120%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
     <!-- Red/white diagonal stripes for awning -->
     <pattern id="awn" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(-45)">
       <rect width="10" height="20" fill="#D72B2B"/>
@@ -519,7 +536,7 @@
     </linearGradient>
     <!-- Clip for awning -->
     <clipPath id="awnClip">
-      <rect x="20" y="96" width="380" height="46"/>
+      <rect x="58" y="66" width="304" height="34"/>
     </clipPath>
     <!-- Clip scene width for people walking -->
     <clipPath id="sceneClip">
@@ -527,7 +544,8 @@
     </clipPath>
   </defs>
 
-  <!-- ░░ GROUND ░░ -->
+  <!-- ░░ REST OF SCENE ░░ -->
+  <g transform="translate(0,60)">
   <rect x="0" y="310" width="420" height="90" fill="url(#groundGrad)"/>
   <!-- ground shadow under kiosk -->
   <ellipse cx="210" cy="318" rx="120" ry="9" fill="#1A1208" opacity="0.10"/>
@@ -588,28 +606,21 @@
   </g>
 
   <!-- ░░ SIGN + MENU BOARD ░░ -->
-  <!-- Red name sign -->
-  <rect x="120" y="190" width="180" height="23" rx="2" fill="#D72B2B"/>
-  <text x="210" y="206" text-anchor="middle" font-family="monospace" font-size="9.5" font-weight="bold" fill="white" letter-spacing="1.2">TAIDESNÄGÄRI</text>
-  <!-- Menu board -->
-  <rect x="140" y="116" width="140" height="68" rx="3" fill="#1A1208"/>
-  <text x="210" y="132" text-anchor="middle" font-family="monospace" font-size="7.5" fill="#F5C518" letter-spacing="0.8">TILAA PIIRROS</text>
-  <line x1="148" y1="138" x2="272" y2="138" stroke="#333" stroke-width="0.6"/>
-  <text x="152" y="150" font-family="monospace" font-size="6.5" fill="rgba(255,255,255,0.7)">● Postikortti</text>
-  <text x="152" y="163" font-family="monospace" font-size="6.5" fill="rgba(255,255,255,0.7)">● A4  /  A3</text>
-  <text x="152" y="176" font-family="monospace" font-size="6.5" fill="rgba(255,255,255,0.55)">● Käsinpiirretty</text>
+  <!-- Red name sign — now on top -->
+  <rect x="120" y="116" width="180" height="23" rx="2" fill="none"/>
+  <text x="210" y="134" text-anchor="middle" font-family="monospace" font-size="16" font-weight="bold" fill="#1A1208" letter-spacing="2">Taidesnägäri</text>
+  <!-- Menu board — now below the sign -->
+  <rect x="140" y="143" width="140" height="68" rx="3" fill="#1A1208"/>
+  <text x="210" y="159" text-anchor="middle" font-family="monospace" font-size="7.5" fill="#F5C518" letter-spacing="0.8">TILAA PIIRROS</text>
+  <line x1="148" y1="165" x2="272" y2="165" stroke="#333" stroke-width="0.6"/>
+  <text x="152" y="177" font-family="monospace" font-size="6.5" fill="rgba(255,255,255,0.7)">● Postikortti</text>
+  <text x="152" y="190" font-family="monospace" font-size="6.5" fill="rgba(255,255,255,0.7)">● A4  /  A3</text>
+  <text x="152" y="203" font-family="monospace" font-size="6.5" fill="rgba(255,255,255,0.55)">● Käsinpiirretty</text>
 
   <!-- ░░ MARQUEE AWNING ░░ -->
-  <rect x="20" y="96" width="380" height="46" fill="url(#awn)" clip-path="url(#awnClip)"/>
+  <rect x="58" y="66" width="304" height="34" fill="url(#awn)" clip-path="url(#awnClip)"/>
   <!-- Scalloped fringe -->
-  <path d="M20,142
-    Q29,158 38,142 Q47,158 56,142 Q65,158 74,142 Q83,158 92,142
-    Q101,158 110,142 Q119,158 128,142 Q137,158 146,142 Q155,158 164,142
-    Q173,158 182,142 Q191,158 200,142 Q209,158 218,142 Q227,158 236,142
-    Q245,158 254,142 Q263,158 272,142 Q281,158 290,142 Q299,158 308,142
-    Q317,158 326,142 Q335,158 344,142 Q353,158 362,142 Q371,158 380,142
-    Q389,158 398,142 L400,136 L20,136 Z"
-    fill="#D72B2B"/>
+  <path d="M58,100 Q66.0,114 74,100 Q82.0,114 90,100 Q98.0,114 106,100 Q114.0,114 122,100 Q130.0,114 138,100 Q146.0,114 154,100 Q162.0,114 170,100 Q178.0,114 186,100 Q194.0,114 202,100 Q210.0,114 218,100 Q226.0,114 234,100 Q242.0,114 250,100 Q258.0,114 266,100 Q274.0,114 282,100 Q290.0,114 298,100 Q306.0,114 314,100 Q322.0,114 330,100 Q338.0,114 346,100 Q354.0,114 362,100 L362,94 L58,94 Z" fill="#D72B2B"/>
 
   <!-- ░░ ANIMATED PEOPLE ░░ -->
   <g clip-path="url(#sceneClip)">
@@ -713,6 +724,8 @@
     <line x1="178" y1="256" x2="176" y2="261" stroke="#1A1208" stroke-width="1.6" stroke-linecap="round"/>
     <ellipse cx="190" cy="228" rx="7" ry="5" fill="#C8845A" transform="rotate(-30,190,228)"/>
   </g>
+
+  </g><!-- end scene translate -->
 
 </svg>
     </div>
