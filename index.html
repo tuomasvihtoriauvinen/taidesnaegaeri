@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Taidesnägäri — Sponsorointiyhteistyö</title>
+<title>Taidesnägäri — Tapahtumayhteistyö</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
@@ -458,6 +458,7 @@
   }
 
   @media (max-width: 768px) {
+    .artist-section-grid { grid-template-columns: 1fr !important; }
     .hero { grid-template-columns: 1fr; }
     .hero-left::after { display: none; }
     .hero-right { padding: 40px; justify-content: center; }
@@ -483,12 +484,12 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="kiosk-label">Helsinki · Sponsorointiyhteistyö 2026</div>
+    <div class="kiosk-label">Helsinki · Tapahtumayhteistyö 2026</div>
     <h1 class="hero-title">
       Taide<br><span class="art">snägäri</span>
     </h1>
     <p class="hero-subtitle">
-      Tilaa piirros tiskiltä. Kuten grilliltä tilataan lounas — täältä tilataan piirros: postikortti, A4 tai A3, tehty käsin silmiesi edessä. Festareilla, toreilla, sisällä tai ulkona.
+      Taidesnägäri tuo käsinpiirretyn taiteen suoraan tapahtumaasi. Vieraat tilaavat oman piirroksen tiskiltä — postikortti, A4 tai A3 — ja kantavat kotiin jotain ainutlaatuista.
     </p>
   </div>
   <div class="hero-right">
@@ -777,47 +778,99 @@
     </div>
     <div class="concept-card">
       <span class="concept-icon">🤝</span>
-      <div class="concept-title">Yhteisöllinen visio</div>
-      <p class="concept-text">Sponsorit ovat osa tarinaa — näkyvillä fyysisesti kioskissa ja digitaalisesti jokaisessa tapahtumassa.</p>
+      <div class="concept-title">Muistoja kotiin</div>
+      <p class="concept-text">Jokainen vieras saa mukaansa käsinpiirretyn teoksen — ainutlaatuinen muisto juuri tästä tapahtumasta.</p>
     </div>
   </div>
 </div>
 
-<!-- SPONSORSHIP TIERS -->
+<!-- ARTIST -->
+<section style="padding:100px 80px; background:var(--dark); color:white; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
+  <div>
+    <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent-yellow);border:1px solid var(--accent-yellow);padding:6px 14px;display:inline-block;font-family:'Space Mono',monospace;margin-bottom:40px;">Taiteilija</div>
+    <h2 style="font-family:'Syne',sans-serif;font-size:clamp(36px,4vw,52px);font-weight:800;line-height:1.05;color:white;margin-bottom:8px;">Tuomas</h2>
+    <h2 style="font-family:'Syne',sans-serif;font-size:clamp(36px,4vw,52px);font-weight:800;line-height:1.05;color:var(--accent-yellow);margin-bottom:8px;">Vihtori</h2>
+    <h2 style="font-family:'Syne',sans-serif;font-size:clamp(36px,4vw,52px);font-weight:800;line-height:1.05;color:white;margin-bottom:40px;">Auvinen</h2>
+    <p style="font-size:14px;line-height:1.9;color:rgba(255,255,255,0.72);max-width:480px;font-family:'Space Mono',monospace;">
+      Taidesnägäri ei ole vain kioski — se on Tuomas. Täysin omanlaisensa taiteellinen ääni. Pirteä visuaalinen maailma, tarkka käsi ja tyyli, joka on kehittynyt vuosien saatossa.
+    </p>
+    <p style="font-size:14px;line-height:1.9;color:rgba(255,255,255,0.72);max-width:480px;font-family:'Space Mono',monospace;margin-top:20px;">
+      Yhtä tärkeää kuin taide itse on ihminen sen takana. Tuomas on se harvinainen yhdistelmä — luova ajattelija ja aidosti lämmin tyyppi, jonka kanssa jokainen kohtaaminen jää mieleen. Tiskillä se näkyy: jokainen piirros syntyy dialogissa tilaajalleen, räätälöitynä ja läsnäolevana.
+    </p>
+  </div>
+
+  <!-- Artist "card" — bold typographic treatment -->
+  <div style="position:relative;">
+    <!-- Big decorative initial -->
+    <div style="font-family:'Syne',sans-serif;font-size:220px;font-weight:800;line-height:1;color:rgba(255,255,255,0.04);position:absolute;top:-40px;right:-20px;pointer-events:none;user-select:none;">T</div>
+
+    <div style="border:2px solid rgba(255,255,255,0.12);padding:48px;position:relative;">
+      <!-- Top accent line -->
+      <div style="width:48px;height:3px;background:var(--accent-yellow);margin-bottom:32px;"></div>
+
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">Tunnusmerkit</div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:40px;">
+        <div style="display:flex;align-items:baseline;gap:16px;">
+          <span style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--red);">01</span>
+          <span style="font-family:'Space Mono',monospace;font-size:13px;color:rgba(255,255,255,0.8);line-height:1.5;">Täysin omaleimainen tyyli,<br>jota ei voi jäljitellä</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:16px;">
+          <span style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--red);">02</span>
+          <span style="font-family:'Space Mono',monospace;font-size:13px;color:rgba(255,255,255,0.8);line-height:1.5;">Piirtää nopeasti, tarkasti<br>ja tilauksesta silmien edessä</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:16px;">
+          <span style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--red);">03</span>
+          <span style="font-family:'Space Mono',monospace;font-size:13px;color:rgba(255,255,255,0.8);line-height:1.5;">Ihmisläheinen, hauska<br>ja helposti lähestyttävä</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:16px;">
+          <span style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--red);">04</span>
+          <span style="font-family:'Space Mono',monospace;font-size:13px;color:rgba(255,255,255,0.8);line-height:1.5;">Se tyyppi, jonka kohtaamisen<br>muistaa vielä kotona</span>
+        </div>
+      </div>
+
+      <div style="width:100%;height:1px;background:rgba(255,255,255,0.08);margin-bottom:28px;"></div>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:1px;">Taidesnägäri on Tuomas Vihtori Auvisen luomus,<br>brändi ja kutsumus — kaikki yhdessä paketissa.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- EVENT PROPOSAL -->
 <section class="sponsor-section">
-  <div class="section-tag">Yhteistyö</div>
-  <h2 class="section-title" style="color:white;">Ole osa taidetta.</h2>
+  <div class="section-tag">Tapahtumayhteistyö</div>
+  <h2 class="section-title" style="color:white;">Tuo Taidesnägäri tapahtumaasi.</h2>
   <p class="section-body">
-    Sponsorointiyhteistyö tarjoaa teille näkyvyyttä siellä, missä kulttuuri syntyy. Logonne kioskissa, nimenne tapahtumissa, äänenne suomalaisessa taideyhteisössä.
+    Taidesnägäri sopii festivaaleihin, markkinoille, yritystapahtumiin, pop-up-päiviin ja kulttuuritapahtumiin. Kioski on täysin omavarainen — se saapuu paikalle, avaa luukun ja alkaa palvella. Vieraat jonottavat, tilaavat ja lähtevät hymy kasvoilla käsinpiirretty teos kainalossaan.
   </p>
 
   <div class="tiers">
     <div class="tier">
-      <div class="tier-badge">Taso 01</div>
-      <div class="tier-name">Materiaali­kumppani</div>
+      <div class="tier-badge">Mitä saat</div>
+      <div class="tier-name">Tapahtuma­elämys</div>
       <div class="tier-divider"></div>
-      <p class="tier-benefit">Logo kioskissa pysyvästi</p>
-      <p class="tier-benefit">Maininta kaikissa tapahtumissa</p>
-      <p class="tier-benefit">Some-näkyvyys jokaisessa postauksessa</p>
-      <p class="tier-benefit">Nimetty viralliseksi yhteistyökumppaniksi</p>
+      <p class="tier-benefit">Visuaalisesti erottuva elementti ohjelmaasi</p>
+      <p class="tier-benefit">Vieraille ainutlaatuinen, henkilökohtainen muisto</p>
+      <p class="tier-benefit">Luonnollinen kohtaamispiste ja somesisältöä</p>
+      <p class="tier-benefit">Täysin vaivaton — me hoidamme kaiken</p>
     </div>
     <div class="tier">
-      <div class="tier-badge">Taso 02</div>
-      <div class="tier-name">Rakennus­kumppani</div>
+      <div class="tier-badge">Sopii erityisesti</div>
+      <div class="tier-name">Kaikenlaisiin tapahtumiin</div>
       <div class="tier-divider"></div>
-      <p class="tier-benefit">Kaikki Taso 01 edut</p>
-      <p class="tier-benefit">Logo pääpaikalla kioskissa</p>
-      <p class="tier-benefit">Yhteisbrändätty sisältö someen</p>
-      <p class="tier-benefit">Maininta lehdistötiedotteissa</p>
+      <p class="tier-benefit">Kesäfestivaalit ja ulkoilmatapahtumat</p>
+      <p class="tier-benefit">Kulttuuritapahtumat ja taidemessut</p>
+      <p class="tier-benefit">Yritystapahtumat ja pikkujoulut</p>
+      <p class="tier-benefit">Markkinat, pop-upit ja kaupunkifestivaalit</p>
     </div>
     <div class="tier">
-      <div class="tier-badge">Taso 03</div>
-      <div class="tier-name">Pää­sponsori</div>
+      <div class="tier-badge">Käytännössä</div>
+      <div class="tier-name">Helppo järjestää</div>
       <div class="tier-divider"></div>
-      <p class="tier-benefit">Kaikki Taso 01 & 02 edut</p>
-      <p class="tier-benefit">Nimetty pääsponsori kaikessa viestinnässä</p>
-      <p class="tier-benefit">Osallistuminen tulevaan kehitykseen</p>
-      <p class="tier-benefit">Eksklusiivinen yhteistyömahdollisuus</p>
+      <p class="tier-benefit">Kioski 1,2 m × 1,2 m — mahtuu kaikkialle</p>
+      <p class="tier-benefit">Sisä- ja ulkotiloihin soveltuva</p>
+      <p class="tier-benefit">Räätälöitävissä tapahtumasi teemaan</p>
+      <p class="tier-benefit">Ota yhteyttä niin sovitaan yksityiskohdat</p>
     </div>
   </div>
 </section>
@@ -875,7 +928,7 @@
 <!-- CTA -->
 <section class="cta-section">
   <div class="cta-title">
-    Rakennetaan<br>yhdessä<br><em>jotain pysyvää.</em>
+    Otetaan<br>Taidesnägäri<br><em>tapahtumaasi.</em>
   </div>
   <a href="/cdn-cgi/l/email-protection#710510181514021f10141610140318311409101c011d145f1718" class="cta-button">Ota yhteyttä →</a>
 </section>
